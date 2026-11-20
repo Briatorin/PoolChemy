@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Poolchemy — Crystal Clear Pool Chemistry</title>
-  <meta name="description" content="Premium pool chemistry products for crystal clear water. Professional-grade chemicals, natural solutions, and expert care.">
+  <title>Poolchemy — Premium Pool Chemistry</title>
+  <meta name="description" content="Premium pool chemistry for crystal clear water. Professional-grade products with expert guidance.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
@@ -14,177 +14,211 @@
       --teal-dark: #0f766e;
       --teal-light: #14b8a6;
       --cyan: #22d3ee;
-      --navy: #0f172a;
-      --navy-soft: #1e293b;
+      --navy: #0c1222;
+      --navy-soft: #151d2e;
       --white: #ffffff;
-      --off-white: #f8fafc;
+      --off-white: #f7f9fc;
       --gray: #64748b;
-      --accent: #06b6d4;
-      --gradient: linear-gradient(135deg, #0d9488 0%, #0891b2 50%, #06b6d4 100%);
-      --shadow: 0 10px 40px -10px rgba(13, 148, 136, 0.25);
-      --radius: 16px;
+      --gray-light: #94a3b8;
+      --gradient: linear-gradient(135deg, #0d9488 0%, #0891b2 55%, #06b6d4 100%);
+      --shadow: 0 12px 40px -12px rgba(13, 148, 136, 0.28);
+      --shadow-soft: 0 4px 24px rgba(15, 23, 42, 0.06);
+      --radius: 18px;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', system-ui, sans-serif;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
       color: var(--navy);
       background: var(--off-white);
-      line-height: 1.6;
+      line-height: 1.65;
       overflow-x: hidden;
     }
+
+    /* ===== LANGUAGE MODAL ===== */
+    .lang-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(12, 18, 34, 0.72);
+      backdrop-filter: blur(12px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 1;
+      transition: opacity 0.4s ease;
+    }
+    .lang-modal.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .lang-card {
+      background: white;
+      border-radius: 24px;
+      padding: 2.75rem 2.5rem;
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 25px 80px rgba(0,0,0,0.25);
+      animation: modalIn 0.5s cubic-bezier(0.34, 1.2, 0.64, 1);
+    }
+    @keyframes modalIn {
+      from { opacity: 0; transform: scale(0.92) translateY(20px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .lang-card img {
+      height: 48px;
+      margin-bottom: 1.5rem;
+    }
+    .lang-card h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.55rem;
+      margin-bottom: 0.5rem;
+      color: var(--navy);
+    }
+    .lang-card p {
+      color: var(--gray);
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+    }
+    .lang-btns {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+    .lang-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      padding: 1rem 1.5rem;
+      border-radius: 14px;
+      border: 2px solid #e2e8f0;
+      background: white;
+      font-size: 1.05rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      font-family: inherit;
+      color: var(--navy);
+    }
+    .lang-btn:hover {
+      border-color: var(--teal);
+      background: rgba(13, 148, 136, 0.06);
+      transform: translateY(-2px);
+    }
+    .lang-btn .flag { font-size: 1.4rem; }
 
     /* ===== NAV ===== */
     .nav {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       z-index: 1000;
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(13, 148, 136, 0.1);
-      transition: all 0.3s ease;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(13,148,136,0.08);
+      transition: box-shadow 0.3s;
     }
-
-    .nav.scrolled {
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
-    }
-
+    .nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.07); }
     .nav-inner {
-      max-width: 1200px;
+      max-width: 1140px;
       margin: 0 auto;
-      padding: 0.85rem 1.5rem;
+      padding: 0.9rem 1.5rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
-
-    .logo-link {
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-    }
-
     .logo-link img {
-      height: 42px;
-      width: auto;
-      transition: transform 0.3s ease;
+      height: 40px;
+      transition: transform 0.3s;
     }
-
-    .logo-link:hover img {
-      transform: scale(1.05);
-    }
-
+    .logo-link:hover img { transform: scale(1.04); }
     .nav-links {
       display: flex;
-      gap: 2rem;
+      gap: 1.75rem;
       list-style: none;
       align-items: center;
     }
-
     .nav-links a {
       text-decoration: none;
       color: var(--navy);
       font-weight: 500;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       position: relative;
       transition: color 0.2s;
     }
-
     .nav-links a::after {
       content: '';
       position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 2px;
+      bottom: -4px; left: 0;
+      width: 0; height: 2px;
       background: var(--teal);
-      transition: width 0.3s ease;
+      transition: width 0.3s;
     }
-
-    .nav-links a:hover {
-      color: var(--teal);
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
-    }
+    .nav-links a:hover { color: var(--teal); }
+    .nav-links a:hover::after { width: 100%; }
 
     .btn {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.7rem 1.4rem;
+      padding: 0.7rem 1.35rem;
       border-radius: 999px;
       font-weight: 600;
       font-size: 0.9rem;
       text-decoration: none;
       border: none;
       cursor: pointer;
-      transition: all 0.25s ease;
+      transition: all 0.25s;
       font-family: inherit;
     }
-
     .btn-primary {
       background: var(--gradient);
       color: white;
-      box-shadow: 0 4px 20px rgba(13, 148, 136, 0.35);
+      box-shadow: 0 4px 18px rgba(13,148,136,0.35);
     }
-
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(13, 148, 136, 0.45);
+      box-shadow: 0 8px 28px rgba(13,148,136,0.45);
     }
-
     .btn-outline {
       background: transparent;
       color: var(--teal);
       border: 2px solid var(--teal);
     }
-
     .btn-outline:hover {
       background: var(--teal);
       color: white;
     }
-
-    .cart-btn {
-      position: relative;
-      background: var(--navy);
+    .btn-whatsapp {
+      background: #25D366;
       color: white;
-      padding: 0.6rem 1.1rem;
+      box-shadow: 0 4px 18px rgba(37,211,102,0.35);
     }
-
-    .cart-count {
-      position: absolute;
-      top: -6px;
-      right: -6px;
-      background: var(--cyan);
+    .btn-whatsapp:hover {
+      background: #1da851;
+      transform: translateY(-2px);
+    }
+    .lang-switch {
+      background: #f1f5f9;
+      border: none;
+      padding: 0.45rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
       color: var(--navy);
-      font-size: 0.7rem;
-      font-weight: 700;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      transition: background 0.2s;
     }
-
+    .lang-switch:hover { background: #e2e8f0; }
     .mobile-toggle {
       display: none;
       background: none;
       border: none;
-      font-size: 1.5rem;
+      font-size: 1.45rem;
       cursor: pointer;
       color: var(--navy);
     }
@@ -197,317 +231,367 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      padding: 6rem 1.5rem 4rem;
+      padding: 7rem 1.5rem 5rem;
     }
-
     .hero-bg {
       position: absolute;
       inset: 0;
       background: url('https://images.pexels.com/photos/9030276/pexels-photo-9030276.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover no-repeat;
       transform: scale(1.05);
-      animation: subtleZoom 20s ease-in-out infinite alternate;
+      animation: subtleZoom 22s ease-in-out infinite alternate;
     }
-
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(15, 23, 42, 0.75) 0%, rgba(13, 148, 136, 0.55) 100%);
+      background: linear-gradient(145deg, rgba(12,18,34,0.82) 0%, rgba(13,148,136,0.5) 100%);
     }
-
     @keyframes subtleZoom {
       from { transform: scale(1.05); }
       to { transform: scale(1.12); }
     }
-
     .hero-content {
       position: relative;
       z-index: 2;
       text-align: center;
-      max-width: 800px;
+      max-width: 780px;
       color: white;
     }
-
     .hero-logo {
-      width: 220px;
-      max-width: 80%;
-      margin-bottom: 1.5rem;
-      filter: drop-shadow(0 8px 24px rgba(0,0,0,0.3));
-      animation: floatIn 1s ease-out both;
+      width: 200px;
+      max-width: 75%;
+      margin-bottom: 1.4rem;
+      filter: drop-shadow(0 8px 24px rgba(0,0,0,0.35));
+      animation: floatIn 0.9s ease-out both;
     }
-
     .hero h1 {
       font-family: 'Outfit', sans-serif;
-      font-size: clamp(2.4rem, 6vw, 3.8rem);
+      font-size: clamp(2.3rem, 5.5vw, 3.5rem);
       font-weight: 700;
       line-height: 1.15;
       margin-bottom: 1rem;
-      animation: floatIn 1s ease-out 0.15s both;
+      animation: floatIn 0.9s ease-out 0.12s both;
     }
-
     .hero h1 span {
-      background: linear-gradient(90deg, #22d3ee, #67e8f9);
+      background: linear-gradient(90deg, #22d3ee, #a5f3fc);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-
     .hero p {
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       opacity: 0.92;
       margin-bottom: 2rem;
-      max-width: 560px;
+      max-width: 540px;
       margin-left: auto;
       margin-right: auto;
-      animation: floatIn 1s ease-out 0.3s both;
+      animation: floatIn 0.9s ease-out 0.25s both;
     }
-
     .hero-cta {
       display: flex;
       gap: 1rem;
       justify-content: center;
       flex-wrap: wrap;
-      animation: floatIn 1s ease-out 0.45s both;
+      animation: floatIn 0.9s ease-out 0.38s both;
     }
-
     .hero-cta .btn-primary {
       background: white;
       color: var(--teal-dark);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
     }
-
     .hero-cta .btn-primary:hover {
       background: var(--cyan);
       color: var(--navy);
     }
-
     .hero-cta .btn-outline {
-      border-color: white;
+      border-color: rgba(255,255,255,0.7);
       color: white;
     }
-
     .hero-cta .btn-outline:hover {
       background: white;
       color: var(--teal-dark);
+      border-color: white;
     }
-
     @keyframes floatIn {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-
-    /* Wave divider */
     .wave {
       position: absolute;
-      bottom: -1px;
-      left: 0;
+      bottom: -1px; left: 0;
       width: 100%;
       overflow: hidden;
       line-height: 0;
     }
-
     .wave svg {
-      position: relative;
       display: block;
       width: calc(100% + 1.3px);
-      height: 70px;
+      height: 68px;
     }
+    .wave path { fill: var(--off-white); }
 
-    .wave path {
-      fill: var(--off-white);
+    /* Trust bar */
+    .trust-bar {
+      background: white;
+      border-bottom: 1px solid #eef2f6;
+      padding: 1.25rem 1.5rem;
     }
+    .trust-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--gray);
+    }
+    .trust-item span { font-size: 1.15rem; }
 
     /* ===== SECTIONS ===== */
-    section {
-      padding: 5rem 1.5rem;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
+    section { padding: 5rem 1.5rem; }
+    .container { max-width: 1140px; margin: 0 auto; }
     .section-header {
       text-align: center;
-      margin-bottom: 3.5rem;
+      margin-bottom: 3.25rem;
     }
-
     .section-header h2 {
       font-family: 'Outfit', sans-serif;
-      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-size: clamp(1.75rem, 3.8vw, 2.35rem);
       font-weight: 700;
       color: var(--navy);
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.7rem;
     }
-
     .section-header p {
       color: var(--gray);
-      font-size: 1.1rem;
-      max-width: 560px;
+      font-size: 1.05rem;
+      max-width: 540px;
       margin: 0 auto;
     }
-
     .badge {
       display: inline-block;
-      background: rgba(13, 148, 136, 0.12);
+      background: rgba(13,148,136,0.1);
       color: var(--teal);
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       font-weight: 600;
       padding: 0.35rem 0.9rem;
       border-radius: 999px;
-      margin-bottom: 0.75rem;
-      letter-spacing: 0.03em;
+      margin-bottom: 0.7rem;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
     }
 
-    /* ===== FEATURES ===== */
-    .features {
-      background: var(--off-white);
-    }
-
+    /* Features */
     .features-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.75rem;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
     }
-
     .feature-card {
       background: white;
       border-radius: var(--radius);
-      padding: 2rem;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-      border: 1px solid rgba(13, 148, 136, 0.08);
-      transition: all 0.35s ease;
+      padding: 1.85rem;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(13,148,136,0.07);
+      transition: all 0.35s;
       opacity: 0;
-      transform: translateY(25px);
+      transform: translateY(22px);
     }
-
     .feature-card.visible {
       opacity: 1;
       transform: translateY(0);
     }
-
     .feature-card:hover {
-      transform: translateY(-8px);
+      transform: translateY(-7px);
       box-shadow: var(--shadow);
     }
-
     .feature-icon {
-      width: 56px;
-      height: 56px;
+      width: 52px; height: 52px;
       border-radius: 14px;
       background: var(--gradient);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.5rem;
-      margin-bottom: 1.25rem;
+      font-size: 1.4rem;
+      margin-bottom: 1.15rem;
       color: white;
     }
-
     .feature-card h3 {
-      font-size: 1.2rem;
+      font-size: 1.12rem;
       font-weight: 600;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
     }
-
     .feature-card p {
       color: var(--gray);
-      font-size: 0.95rem;
+      font-size: 0.92rem;
     }
 
-    /* ===== WATER GALLERY ===== */
-    .gallery {
+    /* ===== WATER TEST GUIDE ===== */
+    .test-guide {
       background: white;
     }
-
-    .gallery-grid {
+    .test-steps {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-      border-radius: var(--radius);
-      overflow: hidden;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 3rem;
     }
-
-    .gallery-item {
+    .step-card {
+      background: var(--off-white);
+      border-radius: 16px;
+      padding: 1.5rem;
+      border: 1px solid #e8eef4;
       position: relative;
-      overflow: hidden;
-      aspect-ratio: 4/3;
-      opacity: 0;
-      transform: scale(0.95);
-      transition: all 0.5s ease;
+      transition: all 0.3s;
+    }
+    .step-card:hover {
+      border-color: var(--teal-light);
+      box-shadow: 0 8px 24px rgba(13,148,136,0.1);
+    }
+    .step-num {
+      width: 32px; height: 32px;
+      background: var(--gradient);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+      margin-bottom: 0.9rem;
+    }
+    .step-card h4 {
+      font-size: 1rem;
+      margin-bottom: 0.35rem;
+    }
+    .step-card p {
+      font-size: 0.88rem;
+      color: var(--gray);
     }
 
-    .gallery-item.visible {
-      opacity: 1;
-      transform: scale(1);
+    /* Interactive tester */
+    .tester-box {
+      background: linear-gradient(145deg, #f0fdfa, #ecfeff);
+      border: 1px solid rgba(13,148,136,0.15);
+      border-radius: 20px;
+      padding: 2rem;
+      max-width: 720px;
+      margin: 0 auto;
     }
-
-    .gallery-item img {
+    .tester-box h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.3rem;
+      margin-bottom: 0.4rem;
+      text-align: center;
+    }
+    .tester-box > p {
+      text-align: center;
+      color: var(--gray);
+      font-size: 0.92rem;
+      margin-bottom: 1.75rem;
+    }
+    .tester-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+    @media (max-width: 560px) {
+      .tester-grid { grid-template-columns: 1fr; }
+    }
+    .tester-field label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      color: var(--navy);
+    }
+    .tester-field input {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s ease;
+      padding: 0.7rem 0.9rem;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-family: inherit;
+      transition: border-color 0.2s;
+      background: white;
     }
-
-    .gallery-item:hover img {
-      transform: scale(1.08);
+    .tester-field input:focus {
+      outline: none;
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(13,148,136,0.12);
     }
-
-    .gallery-item::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(15,23,42,0.4), transparent);
-      opacity: 0;
-      transition: opacity 0.3s;
+    .tester-field .hint {
+      font-size: 0.75rem;
+      color: var(--gray-light);
+      margin-top: 0.3rem;
     }
-
-    .gallery-item:hover::after {
-      opacity: 1;
+    .tester-result {
+      margin-top: 1.5rem;
+      padding: 1.25rem;
+      border-radius: 14px;
+      background: white;
+      border: 1px solid #e2e8f0;
+      display: none;
+    }
+    .tester-result.show { display: block; animation: floatIn 0.4s ease; }
+    .result-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.55rem 0;
+      border-bottom: 1px solid #f1f5f9;
+      font-size: 0.92rem;
+    }
+    .result-item:last-child { border-bottom: none; }
+    .status {
+      font-weight: 600;
+      font-size: 0.82rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+    }
+    .status.ok { background: #d1fae5; color: #065f46; }
+    .status.low { background: #fef3c7; color: #92400e; }
+    .status.high { background: #fee2e2; color: #991b1b; }
+    .tester-actions {
+      margin-top: 1.25rem;
+      text-align: center;
     }
 
     /* ===== STORE ===== */
     .store {
-      background: linear-gradient(180deg, var(--off-white) 0%, #e0f2fe 100%);
+      background: linear-gradient(180deg, var(--off-white) 0%, #e8f7f5 100%);
     }
-
     .products-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.75rem;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 1.5rem;
     }
-
     .product-card {
       background: white;
       border-radius: var(--radius);
       overflow: hidden;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
-      border: 1px solid rgba(13, 148, 136, 0.08);
-      transition: all 0.35s ease;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(13,148,136,0.07);
+      transition: all 0.35s;
       display: flex;
       flex-direction: column;
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(28px);
     }
-
     .product-card.visible {
       opacity: 1;
       transform: translateY(0);
     }
-
     .product-card:hover {
-      transform: translateY(-10px);
+      transform: translateY(-8px);
       box-shadow: var(--shadow);
     }
-
     .product-image {
-      height: 200px;
+      height: 170px;
       background: linear-gradient(135deg, #ccfbf1, #a5f3fc);
       display: flex;
       align-items: center;
@@ -515,100 +599,81 @@
       position: relative;
       overflow: hidden;
     }
-
     .product-image::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: url('https://images.pexels.com/photos/2570389/pexels-photo-2570389.jpeg?auto=compress&cs=tinysrgb&w=600') center/cover;
-      opacity: 0.25;
+      background: url('https://images.pexels.com/photos/2570389/pexels-photo-2570389.jpeg?auto=compress&cs=tinysrgb&w=500') center/cover;
+      opacity: 0.22;
     }
-
     .product-icon {
-      font-size: 4rem;
+      font-size: 3.4rem;
       z-index: 1;
-      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
-      transition: transform 0.4s ease;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.12));
+      transition: transform 0.4s;
     }
-
     .product-card:hover .product-icon {
-      transform: scale(1.12) rotate(-5deg);
+      transform: scale(1.1) rotate(-4deg);
     }
-
     .product-body {
-      padding: 1.5rem;
+      padding: 1.35rem;
       flex: 1;
       display: flex;
       flex-direction: column;
     }
-
     .product-tag {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 600;
       color: var(--teal);
       text-transform: uppercase;
       letter-spacing: 0.04em;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.35rem;
     }
-
     .product-card h3 {
-      font-size: 1.15rem;
+      font-size: 1.08rem;
       font-weight: 600;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.35rem;
     }
-
     .product-card p {
       color: var(--gray);
-      font-size: 0.9rem;
-      margin-bottom: 1.25rem;
+      font-size: 0.87rem;
+      margin-bottom: 1.15rem;
       flex: 1;
     }
-
     .product-footer {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1rem;
+      gap: 0.75rem;
     }
-
     .price {
       font-family: 'Outfit', sans-serif;
-      font-size: 1.35rem;
+      font-size: 1.25rem;
       font-weight: 700;
       color: var(--navy);
     }
-
-    .price small {
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--gray);
-    }
-
-    .add-btn {
-      background: var(--navy);
+    .order-btn {
+      background: #25D366;
       color: white;
-      padding: 0.6rem 1.1rem;
+      padding: 0.55rem 1rem;
       border-radius: 10px;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 600;
       border: none;
       cursor: pointer;
       transition: all 0.25s;
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.35rem;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .order-btn:hover {
+      background: #1da851;
+      transform: scale(1.04);
     }
 
-    .add-btn:hover {
-      background: var(--teal);
-      transform: scale(1.05);
-    }
-
-    .add-btn.added {
-      background: var(--teal);
-    }
-
-    /* ===== CTA ===== */
+    /* CTA */
     .cta {
       background: var(--navy);
       color: white;
@@ -616,196 +681,139 @@
       position: relative;
       overflow: hidden;
     }
-
     .cta::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: url('https://images.pexels.com/photos/18374070/pexels-photo-18374070.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover;
-      opacity: 0.15;
+      background: url('https://images.pexels.com/photos/18374070/pexels-photo-18374070.jpeg?auto=compress&cs=tinysrgb&w=1400') center/cover;
+      opacity: 0.12;
     }
-
-    .cta .container {
-      position: relative;
-      z-index: 1;
-    }
-
+    .cta .container { position: relative; z-index: 1; }
     .cta h2 {
       font-family: 'Outfit', sans-serif;
-      font-size: clamp(1.8rem, 4vw, 2.6rem);
-      margin-bottom: 1rem;
+      font-size: clamp(1.7rem, 3.8vw, 2.4rem);
+      margin-bottom: 0.85rem;
     }
-
     .cta p {
       opacity: 0.85;
-      margin-bottom: 2rem;
-      max-width: 500px;
+      margin-bottom: 1.75rem;
+      max-width: 480px;
       margin-left: auto;
       margin-right: auto;
     }
 
-    /* ===== FOOTER ===== */
+    /* Footer */
     footer {
       background: var(--navy-soft);
-      color: rgba(255,255,255,0.7);
-      padding: 3.5rem 1.5rem 2rem;
+      color: rgba(255,255,255,0.65);
+      padding: 3.25rem 1.5rem 1.75rem;
     }
-
     .footer-grid {
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 2.5rem;
-      max-width: 1200px;
-      margin: 0 auto 2.5rem;
+      gap: 2.25rem;
+      max-width: 1140px;
+      margin: 0 auto 2.25rem;
     }
-
     .footer-brand img {
-      height: 40px;
-      margin-bottom: 1rem;
+      height: 38px;
+      margin-bottom: 0.9rem;
       filter: brightness(0) invert(1);
     }
-
     .footer-brand p {
-      font-size: 0.9rem;
-      max-width: 280px;
+      font-size: 0.88rem;
+      max-width: 270px;
       line-height: 1.6;
     }
-
     .footer-col h4 {
       color: white;
-      font-size: 0.95rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
-
-    .footer-col ul {
-      list-style: none;
-    }
-
-    .footer-col a {
-      color: rgba(255,255,255,0.65);
-      text-decoration: none;
       font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.9rem;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col a {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      font-size: 0.87rem;
       display: block;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.45rem;
       transition: color 0.2s;
     }
-
-    .footer-col a:hover {
-      color: var(--cyan);
-    }
-
+    .footer-col a:hover { color: var(--cyan); }
     .footer-bottom {
-      max-width: 1200px;
+      max-width: 1140px;
       margin: 0 auto;
-      padding-top: 1.5rem;
-      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 1.35rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    /* ===== CART TOAST ===== */
-    .toast {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      background: var(--navy);
-      color: white;
-      padding: 1rem 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.25);
-      display: flex;
-      align-items: center;
       gap: 0.75rem;
-      z-index: 2000;
-      transform: translateY(120px);
-      opacity: 0;
-      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
-    .toast.show {
-      transform: translateY(0);
-      opacity: 1;
-    }
-
-    .toast-icon {
-      width: 28px;
-      height: 28px;
-      background: var(--teal);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.9rem;
-    }
-
-    /* ===== RESPONSIVE ===== */
+    /* Responsive */
     @media (max-width: 900px) {
-      .gallery-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-      .footer-grid {
-        grid-template-columns: 1fr 1fr;
-      }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
     }
-
     @media (max-width: 700px) {
       .nav-links {
         display: none;
         position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
+        top: 100%; left: 0; right: 0;
         background: white;
         flex-direction: column;
-        padding: 1.5rem;
-        gap: 1rem;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        padding: 1.35rem;
+        gap: 0.85rem;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.1);
       }
-
-      .nav-links.open {
-        display: flex;
-      }
-
-      .mobile-toggle {
-        display: block;
-      }
-
-      .gallery-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        min-height: 90vh;
-      }
+      .nav-links.open { display: flex; }
+      .mobile-toggle { display: block; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero { min-height: 92vh; }
+      .trust-inner { gap: 1.25rem; }
     }
   </style>
 </head>
 <body>
+
+  <!-- Language Modal -->
+  <div class="lang-modal" id="langModal">
+    <div class="lang-card">
+      <img src="poolchemy-logo.png" alt="Poolchemy">
+      <h2>Welcome / Welkom</h2>
+      <p>Please select your preferred language<br>Kies uw voorkeurstaal</p>
+      <div class="lang-btns">
+        <button class="lang-btn" data-lang="en">
+          <span class="flag">🇬🇧</span> English
+        </button>
+        <button class="lang-btn" data-lang="nl">
+          <span class="flag">🇳🇱</span> Nederlands
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- Navigation -->
   <nav class="nav" id="nav">
     <div class="nav-inner">
       <a href="#" class="logo-link">
-        <img src="poolchemy-logo.png" alt="Poolchemy Logo">
+        <img src="poolchemy-logo.png" alt="Poolchemy">
       </a>
       <ul class="nav-links" id="navLinks">
-        <li><a href="#features">Why Us</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#store">Store</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#features" data-i18n="nav_why">Why Us</a></li>
+        <li><a href="#test-guide" data-i18n="nav_guide">Water Guide</a></li>
+        <li><a href="#store" data-i18n="nav_store">Store</a></li>
+        <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
         <li>
-          <button class="btn cart-btn" id="cartBtn">
-            🛒 Cart
-            <span class="cart-count" id="cartCount">0</span>
-          </button>
+          <button class="lang-switch" id="langSwitch">EN / NL</button>
+        </li>
+        <li>
+          <a href="https://wa.me/5978185060" class="btn btn-whatsapp" target="_blank" rel="noopener">
+            <span>💬</span> <span data-i18n="nav_order">Order</span>
+          </a>
         </li>
       </ul>
       <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">☰</button>
@@ -818,11 +826,11 @@
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <img src="poolchemy-logo.png" alt="Poolchemy" class="hero-logo">
-      <h1>Perfect Chemistry for <span>Crystal Clear</span> Water</h1>
-      <p>Professional-grade pool chemicals and natural solutions engineered for brilliance, balance, and effortless maintenance.</p>
+      <h1 data-i18n="hero_title">Perfect Chemistry for <span>Crystal Clear</span> Water</h1>
+      <p data-i18n="hero_sub">Professional-grade pool chemicals engineered for brilliance, balance, and effortless maintenance. Trusted by pool owners across Suriname.</p>
       <div class="hero-cta">
-        <a href="#store" class="btn btn-primary">Shop Products →</a>
-        <a href="#features" class="btn btn-outline">Discover More</a>
+        <a href="#store" class="btn btn-primary" data-i18n="hero_cta1">View Products →</a>
+        <a href="#test-guide" class="btn btn-outline" data-i18n="hero_cta2">Water Test Guide</a>
       </div>
     </div>
     <div class="wave">
@@ -832,65 +840,127 @@
     </div>
   </header>
 
+  <!-- Trust bar -->
+  <div class="trust-bar">
+    <div class="trust-inner">
+      <div class="trust-item"><span>🛡️</span> <span data-i18n="trust1">Premium Quality</span></div>
+      <div class="trust-item"><span>💬</span> <span data-i18n="trust2">Order via WhatsApp</span></div>
+      <div class="trust-item"><span>⚡</span> <span data-i18n="trust3">Expert Advice</span></div>
+      <div class="trust-item"><span>📍</span> <span data-i18n="trust4">Suriname Based</span></div>
+    </div>
+  </div>
+
   <!-- Features -->
   <section class="features" id="features">
     <div class="container">
       <div class="section-header">
-        <span class="badge">Why Poolchemy</span>
-        <h2>Science Meets Serenity</h2>
-        <p>We combine advanced chemistry with practical care so your pool stays inviting every single day.</p>
+        <span class="badge" data-i18n="feat_badge">Why Poolchemy</span>
+        <h2 data-i18n="feat_title">Science Meets Serenity</h2>
+        <p data-i18n="feat_sub">Advanced chemistry and practical care so your pool stays inviting every single day.</p>
       </div>
       <div class="features-grid">
         <div class="feature-card">
           <div class="feature-icon">💧</div>
-          <h3>Crystal Clarity</h3>
-          <p>Advanced clarifiers and enzymes remove the finest particles so water looks as pure as it feels.</p>
+          <h3 data-i18n="feat1_t">Crystal Clarity</h3>
+          <p data-i18n="feat1_d">Advanced clarifiers remove the finest particles so water looks as pure as it feels.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">⚖️</div>
-          <h3>Perfect Balance</h3>
-          <p>Precision pH and alkalinity products keep water chemistry in the ideal range for comfort and equipment longevity.</p>
+          <h3 data-i18n="feat2_t">Perfect Balance</h3>
+          <p data-i18n="feat2_d">Precision pH and alkalinity products keep water in the ideal range for comfort and equipment life.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🌿</div>
-          <h3>Smarter Formulas</h3>
-          <p>From traditional sanitizers to innovative natural options — choose what fits your lifestyle and pool type.</p>
+          <h3 data-i18n="feat3_t">Trusted Formulas</h3>
+          <p data-i18n="feat3_d">From proven sanitizers to specialized treatments — products selected for real tropical conditions.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🛡️</div>
-          <h3>Protect & Prevent</h3>
-          <p>Algae control, metal sequestrants, and scale inhibitors protect surfaces and keep problems from starting.</p>
+          <h3 data-i18n="feat4_t">Protect & Prevent</h3>
+          <p data-i18n="feat4_d">Algae control, metal sequestrants and scale inhibitors protect surfaces and stop problems early.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Gallery -->
-  <section class="gallery" id="gallery">
+  <!-- Interactive Water Test Guide -->
+  <section class="test-guide" id="test-guide">
     <div class="container">
       <div class="section-header">
-        <span class="badge">Inspiration</span>
-        <h2>The Beauty of Balanced Water</h2>
-        <p>Crystal clear results that make every swim feel like a private resort.</p>
+        <span class="badge" data-i18n="guide_badge">Interactive Guide</span>
+        <h2 data-i18n="guide_title">Water Test Guide</h2>
+        <p data-i18n="guide_sub">Test your water, understand the results, and know exactly what to order.</p>
       </div>
-      <div class="gallery-grid">
-        <div class="gallery-item">
-          <img src="https://images.pexels.com/photos/9030276/pexels-photo-9030276.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Crystal clear Olympic pool water" loading="lazy">
+
+      <div class="test-steps">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <h4 data-i18n="step1_t">Take a sample</h4>
+          <p data-i18n="step1_d">Collect water from elbow depth, away from returns. Use a clean container.</p>
         </div>
-        <div class="gallery-item">
-          <img src="https://images.pexels.com/photos/18374070/pexels-photo-18374070.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Clear blue tiled pool water" loading="lazy">
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <h4 data-i18n="step2_t">Test the levels</h4>
+          <p data-i18n="step2_d">Use test strips or a liquid kit for free chlorine, pH, alkalinity and calcium.</p>
         </div>
-        <div class="gallery-item">
-          <img src="https://images.pexels.com/photos/2570389/pexels-photo-2570389.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Rippling crystal clear pool surface" loading="lazy">
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <h4 data-i18n="step3_t">Enter results</h4>
+          <p data-i18n="step3_d">Type your readings below. We show ideal ranges and what needs attention.</p>
         </div>
-        <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1713991767449-6d3f6df573b7?auto=format&fit=crop&w=800&q=80" alt="Overhead view of sparkling pool water" loading="lazy">
+        <div class="step-card">
+          <div class="step-num">4</div>
+          <h4 data-i18n="step4_t">Order via WhatsApp</h4>
+          <p data-i18n="step4_d">Message us with your results. We’ll recommend the right products and quantities.</p>
         </div>
-        <div class="gallery-item">
-          <img src="https://images.pexels.com/photos/5928875/pexels-photo-5928875.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Turquoise pool water close-up" loading="lazy">
+      </div>
+
+      <div class="tester-box">
+        <h3 data-i18n="tester_title">Check Your Water Levels</h3>
+        <p data-i18n="tester_sub">Enter your latest test results for instant feedback.</p>
+        <div class="tester-grid">
+          <div class="tester-field">
+            <label data-i18n="label_fc">Free Chlorine (ppm)</label>
+            <input type="number" id="inputFC" step="0.1" min="0" max="20" placeholder="e.g. 2.5">
+            <div class="hint" data-i18n="hint_fc">Ideal: 1.0 – 3.0 ppm</div>
+          </div>
+          <div class="tester-field">
+            <label data-i18n="label_ph">pH</label>
+            <input type="number" id="inputPH" step="0.1" min="6" max="9" placeholder="e.g. 7.4">
+            <div class="hint" data-i18n="hint_ph">Ideal: 7.2 – 7.6</div>
+          </div>
+          <div class="tester-field">
+            <label data-i18n="label_ta">Total Alkalinity (ppm)</label>
+            <input type="number" id="inputTA" step="1" min="0" max="300" placeholder="e.g. 100">
+            <div class="hint" data-i18n="hint_ta">Ideal: 80 – 120 ppm</div>
+          </div>
+          <div class="tester-field">
+            <label data-i18n="label_ch">Calcium Hardness (ppm)</label>
+            <input type="number" id="inputCH" step="1" min="0" max="1000" placeholder="e.g. 250">
+            <div class="hint" data-i18n="hint_ch">Ideal: 200 – 400 ppm</div>
+          </div>
         </div>
-        <div class="gallery-item">
-          <img src="https://images.pexels.com/photos/30463419/pexels-photo-30463419.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Sunny outdoor pool with clear water" loading="lazy">
+        <div class="tester-result" id="testerResult">
+          <div class="result-item">
+            <span data-i18n="res_fc">Free Chlorine</span>
+            <span class="status" id="statusFC">—</span>
+          </div>
+          <div class="result-item">
+            <span data-i18n="res_ph">pH</span>
+            <span class="status" id="statusPH">—</span>
+          </div>
+          <div class="result-item">
+            <span data-i18n="res_ta">Total Alkalinity</span>
+            <span class="status" id="statusTA">—</span>
+          </div>
+          <div class="result-item">
+            <span data-i18n="res_ch">Calcium Hardness</span>
+            <span class="status" id="statusCH">—</span>
+          </div>
+        </div>
+        <div class="tester-actions">
+          <button class="btn btn-primary" id="analyzeBtn" style="margin-top:1rem;" data-i18n="btn_analyze">Analyze Results</button>
+          <a href="https://wa.me/5978185060?text=Hi%20Poolchemy%2C%20I%20tested%20my%20pool%20water%20and%20need%20advice." class="btn btn-whatsapp" id="waAdviceBtn" style="margin-top:0.75rem;display:none;" target="_blank" rel="noopener" data-i18n="btn_wa_advice">Get advice on WhatsApp</a>
         </div>
       </div>
     </div>
@@ -900,22 +970,22 @@
   <section class="store" id="store">
     <div class="container">
       <div class="section-header">
-        <span class="badge">Shop</span>
-        <h2>Poolchemy Store</h2>
-        <p>Everything you need for sparkling, balanced, and inviting water — delivered with care.</p>
+        <span class="badge" data-i18n="store_badge">Our Products</span>
+        <h2 data-i18n="store_title">Poolchemy Store</h2>
+        <p data-i18n="store_sub">Premium chemicals for crystal-clear water. Order easily via WhatsApp — we help you choose the right quantities.</p>
       </div>
-      <div class="products-grid" id="products">
-        <!-- Products injected by JS -->
-      </div>
+      <div class="products-grid" id="products"></div>
     </div>
   </section>
 
   <!-- CTA -->
   <section class="cta" id="contact">
     <div class="container">
-      <h2>Ready for Crystal Clear Water?</h2>
-      <p>Join thousands of pool owners who trust Poolchemy for professional results at home.</p>
-      <a href="#store" class="btn btn-primary" style="background: white; color: var(--teal-dark);">Browse the Store</a>
+      <h2 data-i18n="cta_title">Ready for Crystal Clear Water?</h2>
+      <p data-i18n="cta_sub">Message us on WhatsApp. We’ll help you select the right products and answer any questions.</p>
+      <a href="https://wa.me/5978185060?text=Hi%20Poolchemy%2C%20I%20would%20like%20to%20order%20pool%20chemicals." class="btn btn-whatsapp" target="_blank" rel="noopener" style="font-size:1rem;padding:0.9rem 1.8rem;">
+        <span>💬</span> <span data-i18n="cta_btn">Order on WhatsApp — +597 8185060</span>
+      </a>
     </div>
   </section>
 
@@ -924,164 +994,325 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <img src="poolchemy-logo.png" alt="Poolchemy">
-        <p>Premium pool chemistry for crystal clear water. Formulated with precision, designed for real-world pools.</p>
+        <p data-i18n="footer_about">Premium pool chemistry for crystal clear water. Formulated for tropical conditions and real-world pools in Suriname.</p>
       </div>
       <div class="footer-col">
-        <h4>Shop</h4>
+        <h4 data-i18n="footer_shop">Shop</h4>
         <ul>
-          <li><a href="#store">All Products</a></li>
-          <li><a href="#store">Sanitizers</a></li>
-          <li><a href="#store">Balancers</a></li>
-          <li><a href="#store">Specialty</a></li>
+          <li><a href="#store" data-i18n="footer_all">All Products</a></li>
+          <li><a href="#store" data-i18n="footer_san">Sanitizers</a></li>
+          <li><a href="#store" data-i18n="footer_bal">Balancers</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Company</h4>
+        <h4 data-i18n="footer_company">Company</h4>
         <ul>
-          <li><a href="#features">About</a></li>
-          <li><a href="#gallery">Gallery</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#features" data-i18n="footer_about_link">About</a></li>
+          <li><a href="#test-guide" data-i18n="footer_guide">Water Guide</a></li>
+          <li><a href="#contact" data-i18n="footer_contact">Contact</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Support</h4>
+        <h4 data-i18n="footer_order">Order</h4>
         <ul>
-          <li><a href="#">Water Testing Guide</a></li>
-          <li><a href="#">Dosage Calculator</a></li>
-          <li><a href="#">FAQ</a></li>
+          <li><a href="https://wa.me/5978185060" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="https://wa.me/5978185060" target="_blank" rel="noopener">+597 8185060</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Poolchemy. All rights reserved.</span>
-      <span>Made for crystal clear moments.</span>
+      <span data-i18n="footer_copy">© 2026 Poolchemy. All rights reserved.</span>
+      <span data-i18n="footer_tag">Made for crystal clear moments.</span>
     </div>
   </footer>
 
-  <!-- Toast -->
-  <div class="toast" id="toast">
-    <div class="toast-icon">✓</div>
-    <span id="toastText">Added to cart</span>
-  </div>
-
   <script>
-    // Products data
-    const products = [
-      {
-        id: 1,
-        name: "Chlorine Tablets 3\"",
-        tag: "Sanitizer",
-        desc: "Slow-dissolving stabilized chlorine tablets for continuous protection and crystal clarity.",
-        price: 34.99,
-        icon: "💊"
+    // ===== i18n =====
+    const translations = {
+      en: {
+        nav_why: "Why Us",
+        nav_guide: "Water Guide",
+        nav_store: "Store",
+        nav_contact: "Contact",
+        nav_order: "Order",
+        hero_title: "Perfect Chemistry for <span>Crystal Clear</span> Water",
+        hero_sub: "Professional-grade pool chemicals engineered for brilliance, balance, and effortless maintenance. Trusted by pool owners across Suriname.",
+        hero_cta1: "View Products →",
+        hero_cta2: "Water Test Guide",
+        trust1: "Premium Quality",
+        trust2: "Order via WhatsApp",
+        trust3: "Expert Advice",
+        trust4: "Suriname Based",
+        feat_badge: "Why Poolchemy",
+        feat_title: "Science Meets Serenity",
+        feat_sub: "Advanced chemistry and practical care so your pool stays inviting every single day.",
+        feat1_t: "Crystal Clarity",
+        feat1_d: "Advanced clarifiers remove the finest particles so water looks as pure as it feels.",
+        feat2_t: "Perfect Balance",
+        feat2_d: "Precision pH and alkalinity products keep water in the ideal range for comfort and equipment life.",
+        feat3_t: "Trusted Formulas",
+        feat3_d: "From proven sanitizers to specialized treatments — products selected for real tropical conditions.",
+        feat4_t: "Protect & Prevent",
+        feat4_d: "Algae control, metal sequestrants and scale inhibitors protect surfaces and stop problems early.",
+        guide_badge: "Interactive Guide",
+        guide_title: "Water Test Guide",
+        guide_sub: "Test your water, understand the results, and know exactly what to order.",
+        step1_t: "Take a sample",
+        step1_d: "Collect water from elbow depth, away from returns. Use a clean container.",
+        step2_t: "Test the levels",
+        step2_d: "Use test strips or a liquid kit for free chlorine, pH, alkalinity and calcium.",
+        step3_t: "Enter results",
+        step3_d: "Type your readings below. We show ideal ranges and what needs attention.",
+        step4_t: "Order via WhatsApp",
+        step4_d: "Message us with your results. We’ll recommend the right products and quantities.",
+        tester_title: "Check Your Water Levels",
+        tester_sub: "Enter your latest test results for instant feedback.",
+        label_fc: "Free Chlorine (ppm)",
+        label_ph: "pH",
+        label_ta: "Total Alkalinity (ppm)",
+        label_ch: "Calcium Hardness (ppm)",
+        hint_fc: "Ideal: 1.0 – 3.0 ppm",
+        hint_ph: "Ideal: 7.2 – 7.6",
+        hint_ta: "Ideal: 80 – 120 ppm",
+        hint_ch: "Ideal: 200 – 400 ppm",
+        res_fc: "Free Chlorine",
+        res_ph: "pH",
+        res_ta: "Total Alkalinity",
+        res_ch: "Calcium Hardness",
+        btn_analyze: "Analyze Results",
+        btn_wa_advice: "Get advice on WhatsApp",
+        store_badge: "Our Products",
+        store_title: "Poolchemy Store",
+        store_sub: "Premium chemicals for crystal-clear water. Order easily via WhatsApp — we help you choose the right quantities.",
+        cta_title: "Ready for Crystal Clear Water?",
+        cta_sub: "Message us on WhatsApp. We’ll help you select the right products and answer any questions.",
+        cta_btn: "Order on WhatsApp — +597 8185060",
+        footer_about: "Premium pool chemistry for crystal clear water. Formulated for tropical conditions and real-world pools in Suriname.",
+        footer_shop: "Shop",
+        footer_all: "All Products",
+        footer_san: "Sanitizers",
+        footer_bal: "Balancers",
+        footer_company: "Company",
+        footer_about_link: "About",
+        footer_guide: "Water Guide",
+        footer_contact: "Contact",
+        footer_order: "Order",
+        footer_copy: "© 2026 Poolchemy. All rights reserved.",
+        footer_tag: "Made for crystal clear moments.",
+        status_ok: "Ideal",
+        status_low: "Too low",
+        status_high: "Too high",
+        order_btn: "Order via WhatsApp",
+        products: [
+          { name: "Chlorine Tablets 3\"", tag: "Sanitizer", desc: "Slow-dissolving stabilized tablets for continuous protection and crystal clarity.", price: "34.99" },
+          { name: "pH Up Balancer", tag: "Balance", desc: "Raise pH safely. Essential for swimmer comfort and chemical efficiency.", price: "18.50" },
+          { name: "pH Down / Dry Acid", tag: "Balance", desc: "Lower high pH quickly. Granular formula for precise adjustments.", price: "16.99" },
+          { name: "Algaecide Plus", tag: "Prevention", desc: "Powerful multi-purpose algaecide that prevents and eliminates algae.", price: "24.00" },
+          { name: "Water Clarifier", tag: "Clarity", desc: "Polymer clarifier binds tiny particles so your filter removes them.", price: "14.75" },
+          { name: "Test Kit Pro", tag: "Testing", desc: "Accurate liquid kit for free chlorine, pH, alkalinity and calcium hardness.", price: "29.99" },
+          { name: "Shock Treatment", tag: "Sanitizer", desc: "Fast-acting shock for weekly oxidation and after heavy use.", price: "22.50" },
+          { name: "Metal & Scale Guard", tag: "Protection", desc: "Sequesters metals and prevents scale on surfaces and equipment.", price: "27.00" }
+        ]
       },
-      {
-        id: 2,
-        name: "pH Up Balancer",
-        tag: "Balance",
-        desc: "Raise pH safely and effectively. Essential for swimmer comfort and chemical efficiency.",
-        price: 18.50,
-        icon: "⬆️"
-      },
-      {
-        id: 3,
-        name: "pH Down / Dry Acid",
-        tag: "Balance",
-        desc: "Lower high pH quickly. Granular formula for precise, mess-free adjustments.",
-        price: 16.99,
-        icon: "⬇️"
-      },
-      {
-        id: 4,
-        name: "Algaecide Plus",
-        tag: "Prevention",
-        desc: "Powerful multi-purpose algaecide that prevents and eliminates green and black algae.",
-        price: 24.00,
-        icon: "🌿"
-      },
-      {
-        id: 5,
-        name: "Water Clarifier",
-        tag: "Clarity",
-        desc: "Polymer clarifier binds tiny particles so your filter can remove them. Instant visual improvement.",
-        price: 14.75,
-        icon: "✨"
-      },
-      {
-        id: 6,
-        name: "Test Kit Pro",
-        tag: "Testing",
-        desc: "Accurate liquid reagent kit for free chlorine, pH, alkalinity, and calcium hardness.",
-        price: 29.99,
-        icon: "🧪"
-      },
-      {
-        id: 7,
-        name: "Shock Treatment",
-        tag: "Sanitizer",
-        desc: "Fast-acting non-stabilized shock for weekly oxidation and after heavy use or storms.",
-        price: 22.50,
-        icon: "⚡"
-      },
-      {
-        id: 8,
-        name: "Metal & Scale Guard",
-        tag: "Protection",
-        desc: "Sequesters metals and prevents scale on surfaces and equipment. Protects your investment.",
-        price: 27.00,
-        icon: "🛡️"
+      nl: {
+        nav_why: "Waarom wij",
+        nav_guide: "Watergids",
+        nav_store: "Winkel",
+        nav_contact: "Contact",
+        nav_order: "Bestellen",
+        hero_title: "Perfecte Chemie voor <span>Kristalhelder</span> Water",
+        hero_sub: "Professionele zwembadchemicaliën voor helderheid, balans en eenvoudig onderhoud. Vertrouwd door zwembadeigenaren in Suriname.",
+        hero_cta1: "Bekijk producten →",
+        hero_cta2: "Water testgids",
+        trust1: "Premium kwaliteit",
+        trust2: "Bestellen via WhatsApp",
+        trust3: "Deskundig advies",
+        trust4: "Gevestigd in Suriname",
+        feat_badge: "Waarom Poolchemy",
+        feat_title: "Wetenschap ontmoet sereniteit",
+        feat_sub: "Geavanceerde chemie en praktisch onderhoud zodat uw zwembad elke dag uitnodigend blijft.",
+        feat1_t: "Kristalhelder",
+        feat1_d: "Geavanceerde klaringsmiddelen verwijderen de fijnste deeltjes zodat water er zo puur uitziet als het voelt.",
+        feat2_t: "Perfecte balans",
+        feat2_d: "Precisie pH- en alkaliteitsproducten houden het water in het ideale bereik voor comfort en apparatuur.",
+        feat3_t: "Betrouwbare formules",
+        feat3_d: "Van bewezen desinfectiemiddelen tot speciale behandelingen — geselecteerd voor tropische omstandigheden.",
+        feat4_t: "Beschermen & voorkomen",
+        feat4_d: "Algenbestrijding, metaalbinders en kalkremmers beschermen oppervlakken en stoppen problemen vroeg.",
+        guide_badge: "Interactieve gids",
+        guide_title: "Water testgids",
+        guide_sub: "Test uw water, begrijp de resultaten en weet precies wat u moet bestellen.",
+        step1_t: "Neem een monster",
+        step1_d: "Neem water op elleboogdiepte, weg van de inlaten. Gebruik een schoon bakje.",
+        step2_t: "Test de waarden",
+        step2_d: "Gebruik teststrips of een vloeibare set voor vrij chloor, pH, alkaliteit en calcium.",
+        step3_t: "Voer resultaten in",
+        step3_d: "Typ uw metingen hieronder. Wij tonen ideale bereiken en wat aandacht nodig heeft.",
+        step4_t: "Bestel via WhatsApp",
+        step4_d: "Stuur ons uw resultaten. Wij adviseren de juiste producten en hoeveelheden.",
+        tester_title: "Controleer uw waterwaarden",
+        tester_sub: "Voer uw laatste testresultaten in voor directe feedback.",
+        label_fc: "Vrij chloor (ppm)",
+        label_ph: "pH",
+        label_ta: "Totale alkaliteit (ppm)",
+        label_ch: "Calciumhardheid (ppm)",
+        hint_fc: "Ideaál: 1.0 – 3.0 ppm",
+        hint_ph: "Ideaál: 7.2 – 7.6",
+        hint_ta: "Ideaál: 80 – 120 ppm",
+        hint_ch: "Ideaál: 200 – 400 ppm",
+        res_fc: "Vrij chloor",
+        res_ph: "pH",
+        res_ta: "Totale alkaliteit",
+        res_ch: "Calciumhardheid",
+        btn_analyze: "Resultaten analyseren",
+        btn_wa_advice: "Advies via WhatsApp",
+        store_badge: "Onze producten",
+        store_title: "Poolchemy Winkel",
+        store_sub: "Premium chemicaliën voor kristalhelder water. Bestel eenvoudig via WhatsApp — wij helpen met de juiste hoeveelheden.",
+        cta_title: "Klaar voor kristalhelder water?",
+        cta_sub: "Stuur ons een WhatsApp-bericht. Wij helpen u de juiste producten te kiezen en beantwoorden al uw vragen.",
+        cta_btn: "Bestel via WhatsApp — +597 8185060",
+        footer_about: "Premium zwembadchemie voor kristalhelder water. Geformuleerd voor tropische omstandigheden en echte zwembaden in Suriname.",
+        footer_shop: "Winkel",
+        footer_all: "Alle producten",
+        footer_san: "Desinfectiemiddelen",
+        footer_bal: "Balansmiddelen",
+        footer_company: "Bedrijf",
+        footer_about_link: "Over ons",
+        footer_guide: "Watergids",
+        footer_contact: "Contact",
+        footer_order: "Bestellen",
+        footer_copy: "© 2026 Poolchemy. Alle rechten voorbehouden.",
+        footer_tag: "Gemaakt voor kristalheldere momenten.",
+        status_ok: "Ideaál",
+        status_low: "Te laag",
+        status_high: "Te hoog",
+        order_btn: "Bestel via WhatsApp",
+        products: [
+          { name: "Chloortabletten 3\"", tag: "Desinfectie", desc: "Langzaam oplossende gestabiliseerde tabletten voor continue bescherming en helderheid.", price: "34.99" },
+          { name: "pH Plus", tag: "Balans", desc: "Verhoog de pH veilig. Essentieel voor zwemcomfort en chemische efficiëntie.", price: "18.50" },
+          { name: "pH Min / Droog zuur", tag: "Balans", desc: "Verlaag hoge pH snel. Korrelvorm voor precieze aanpassingen.", price: "16.99" },
+          { name: "Algicide Plus", tag: "Preventie", desc: "Krachtig algicide dat algen voorkomt en elimineert.", price: "24.00" },
+          { name: "Waterklaringsmiddel", tag: "Helderheid", desc: "Polymeer klaringsmiddel bindt fijne deeltjes zodat uw filter ze verwijdert.", price: "14.75" },
+          { name: "Testset Pro", tag: "Testen", desc: "Nauwkeurige vloeibare set voor vrij chloor, pH, alkaliteit en calciumhardheid.", price: "29.99" },
+          { name: "Shock-behandeling", tag: "Desinfectie", desc: "Snelwerkende shock voor wekelijkse oxidatie en na intensief gebruik.", price: "22.50" },
+          { name: "Metaal- & Kalkbeschermer", tag: "Bescherming", desc: "Bindt metalen en voorkomt kalkaanslag op oppervlakken en apparatuur.", price: "27.00" }
+        ]
       }
-    ];
+    };
 
-    // Render products
-    const productsEl = document.getElementById('products');
-    products.forEach((p, i) => {
-      const card = document.createElement('div');
-      card.className = 'product-card';
-      card.style.transitionDelay = `${i * 0.08}s`;
-      card.innerHTML = `
-        <div class="product-image">
-          <span class="product-icon">${p.icon}</span>
-        </div>
-        <div class="product-body">
-          <div class="product-tag">${p.tag}</div>
-          <h3>${p.name}</h3>
-          <p>${p.desc}</p>
-          <div class="product-footer">
-            <div class="price">$${p.price.toFixed(2)}</div>
-            <button class="add-btn" data-id="${p.id}" data-name="${p.name}">
-              <span>+ Add</span>
-            </button>
+    const productIcons = ["💊","⬆️","⬇️","🌿","✨","🧪","⚡","🛡️"];
+    let currentLang = localStorage.getItem('poolchemy_lang') || null;
+
+    function applyLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('poolchemy_lang', lang);
+      document.documentElement.lang = lang;
+      const t = translations[lang];
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key] !== undefined) {
+          el.innerHTML = t[key];
+        }
+      });
+
+      // Rebuild products
+      const productsEl = document.getElementById('products');
+      productsEl.innerHTML = '';
+      t.products.forEach((p, i) => {
+        const msg = encodeURIComponent(
+          lang === 'nl'
+            ? `Hallo Poolchemy, ik wil graag bestellen: ${p.name}`
+            : `Hi Poolchemy, I would like to order: ${p.name}`
+        );
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.style.transitionDelay = `${i * 0.07}s`;
+        card.innerHTML = `
+          <div class="product-image">
+            <span class="product-icon">${productIcons[i]}</span>
           </div>
-        </div>
-      `;
-      productsEl.appendChild(card);
-    });
+          <div class="product-body">
+            <div class="product-tag">${p.tag}</div>
+            <h3>${p.name}</h3>
+            <p>${p.desc}</p>
+            <div class="product-footer">
+              <div class="price">$${p.price}</div>
+              <a href="https://wa.me/5978185060?text=${msg}" class="order-btn" target="_blank" rel="noopener">
+                💬 ${t.order_btn}
+              </a>
+            </div>
+          </div>
+        `;
+        productsEl.appendChild(card);
+      });
 
-    // Cart logic
-    let cartCount = 0;
-    const cartCountEl = document.getElementById('cartCount');
-    const toast = document.getElementById('toast');
-    const toastText = document.getElementById('toastText');
+      // Re-observe new cards
+      document.querySelectorAll('.product-card').forEach(el => observer.observe(el));
+    }
 
-    document.querySelectorAll('.add-btn').forEach(btn => {
+    // Language modal
+    const langModal = document.getElementById('langModal');
+    if (currentLang) {
+      langModal.classList.add('hidden');
+      applyLanguage(currentLang);
+    }
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
       btn.addEventListener('click', () => {
-        cartCount++;
-        cartCountEl.textContent = cartCount;
-        const name = btn.dataset.name;
-        toastText.textContent = `${name} added to cart`;
-        toast.classList.add('show');
-        btn.classList.add('added');
-        btn.innerHTML = '✓ Added';
-        setTimeout(() => {
-          toast.classList.remove('show');
-          btn.classList.remove('added');
-          btn.innerHTML = '<span>+ Add</span>';
-        }, 2000);
+        const lang = btn.dataset.lang;
+        applyLanguage(lang);
+        langModal.classList.add('hidden');
       });
     });
 
-    // Nav scroll effect
+    document.getElementById('langSwitch').addEventListener('click', () => {
+      const next = currentLang === 'en' ? 'nl' : 'en';
+      applyLanguage(next);
+    });
+
+    // Water tester
+    document.getElementById('analyzeBtn').addEventListener('click', () => {
+      const t = translations[currentLang || 'en'];
+      const fc = parseFloat(document.getElementById('inputFC').value);
+      const ph = parseFloat(document.getElementById('inputPH').value);
+      const ta = parseFloat(document.getElementById('inputTA').value);
+      const ch = parseFloat(document.getElementById('inputCH').value);
+
+      function status(val, low, high) {
+        if (isNaN(val)) return { text: '—', cls: '' };
+        if (val < low) return { text: t.status_low, cls: 'low' };
+        if (val > high) return { text: t.status_high, cls: 'high' };
+        return { text: t.status_ok, cls: 'ok' };
+      }
+
+      const sFC = status(fc, 1.0, 3.0);
+      const sPH = status(ph, 7.2, 7.6);
+      const sTA = status(ta, 80, 120);
+      const sCH = status(ch, 200, 400);
+
+      const elFC = document.getElementById('statusFC');
+      const elPH = document.getElementById('statusPH');
+      const elTA = document.getElementById('statusTA');
+      const elCH = document.getElementById('statusCH');
+
+      elFC.textContent = sFC.text; elFC.className = 'status ' + sFC.cls;
+      elPH.textContent = sPH.text; elPH.className = 'status ' + sPH.cls;
+      elTA.textContent = sTA.text; elTA.className = 'status ' + sTA.cls;
+      elCH.textContent = sCH.text; elCH.className = 'status ' + sCH.cls;
+
+      document.getElementById('testerResult').classList.add('show');
+      document.getElementById('waAdviceBtn').style.display = 'inline-flex';
+
+      // Pre-fill WhatsApp with results
+      let summary = currentLang === 'nl'
+        ? `Hallo Poolchemy, mijn waterwaarden:\nVrij chloor: ${isNaN(fc)?'—':fc} ppm\npH: ${isNaN(ph)?'—':ph}\nAlkaliteit: ${isNaN(ta)?'—':ta} ppm\nCalcium: ${isNaN(ch)?'—':ch} ppm\nKunt u mij adviseren?`
+        : `Hi Poolchemy, my water readings:\nFree Chlorine: ${isNaN(fc)?'—':fc} ppm\npH: ${isNaN(ph)?'—':ph}\nAlkalinity: ${isNaN(ta)?'—':ta} ppm\nCalcium: ${isNaN(ch)?'—':ch} ppm\nCan you advise me?`;
+      document.getElementById('waAdviceBtn').href = 'https://wa.me/5978185060?text=' + encodeURIComponent(summary);
+    });
+
+    // Nav scroll
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 40);
@@ -1090,27 +1321,19 @@
     // Mobile menu
     const mobileToggle = document.getElementById('mobileToggle');
     const navLinks = document.getElementById('navLinks');
-    mobileToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
-    });
-
-    // Close mobile menu on link click
+    mobileToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
     navLinks.querySelectorAll('a').forEach(a => {
       a.addEventListener('click', () => navLinks.classList.remove('open'));
     });
 
-    // Intersection Observer for animations
+    // Intersection Observer
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('visible');
       });
-    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
 
-    document.querySelectorAll('.feature-card, .product-card, .gallery-item').forEach(el => {
-      observer.observe(el);
-    });
+    document.querySelectorAll('.feature-card').forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
